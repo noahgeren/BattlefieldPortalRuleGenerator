@@ -4,9 +4,6 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
-import com.noahgeren.bprg.rules.Condition;
-import com.noahgeren.bprg.rules.Event;
-
 public class Rule {
 	
 	protected String name;
@@ -23,6 +20,17 @@ public class Rule {
 	public Rule addActions(Action... actions) {
 		this.actions.addAll(Arrays.asList(actions));
 		return this;
+	}
+	
+	public static enum Event {
+		
+		ONGOING_GLOBAL,
+		ONGOING_CAPTURE_POINT,
+		ONGOING_PLAYER,
+		ONGOING_TEAM,
+		ONGOING_VEHICLE;
+		// TODO
+
 	}
 
 }

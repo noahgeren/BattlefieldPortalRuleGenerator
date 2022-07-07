@@ -1,6 +1,6 @@
 package com.noahgeren.bprg;
 
-public class Value<T> {
+public abstract class Value<T> {
 	
 	Value() {}
 	

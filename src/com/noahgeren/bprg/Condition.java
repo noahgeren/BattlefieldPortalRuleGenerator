@@ -1,4 +1,4 @@
-package com.noahgeren.bprg.rules;
+package com.noahgeren.bprg;
 
 public class Condition {
 	

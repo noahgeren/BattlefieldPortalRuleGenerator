@@ -3,15 +3,16 @@ package com.noahgeren.bprg;
 import java.util.LinkedList;
 import java.util.List;
 
+import com.noahgeren.bprg.Rule.Event;
 import com.noahgeren.bprg.Variable.VariableType;
-import com.noahgeren.bprg.rules.Condition;
-import com.noahgeren.bprg.rules.Event;
 
 public class Mod {
 	
-	private List<Rule> rules = new LinkedList<>();
-	private List<Variable<?>> variables = new LinkedList<>();
-	private List<Subroutine> subroutines = new LinkedList<>();
+	protected List<Rule> rules = new LinkedList<>();
+	protected List<Variable<?>> variables = new LinkedList<>();
+	protected List<Subroutine> subroutines = new LinkedList<>();
+	
+	protected Mod() {}
 	
 	public Rule addRule(String name, Event event, Condition... conditions) {
 		Rule rule = new Rule(name, event, conditions);

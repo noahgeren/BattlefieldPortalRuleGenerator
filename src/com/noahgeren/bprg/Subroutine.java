@@ -1,7 +1,5 @@
 package com.noahgeren.bprg;
 
-import com.noahgeren.bprg.rules.Condition;
-
 public class Subroutine {
 	
 	protected String name;
