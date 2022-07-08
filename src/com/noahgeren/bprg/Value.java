@@ -1,49 +1,31 @@
 package com.noahgeren.bprg;
 
-public abstract class Value<T> {
+public class Value<T> {
 	
-	Value() {}
+	private String xml;
+	
+	protected Value(String xml) {
+		this.xml = xml;
+	}
 	
 	public static Value<Integer> getNumber(int number) {
-		return new NumberLiteral(number);
+		// TODO
+		return new Value<Integer>("");
 	}
 	
 	public static Value<String> getText(String text) {
-		return new TextLiteral(text);
+		// TODO
+		return new Value<String>("");
 	}
 	
 	public static Value<Boolean> getBoolean(boolean bool) {
-		return new BooleanLiteral(bool);
+		// TODO
+		return new Value<Boolean>("");
 	}
 	
-	private static class NumberLiteral extends Value<Integer> {
-		
-		private int number;
-		
-		private NumberLiteral(int number) {
-			this.number = number;
-		}
-		
-	}
-	
-	private static class TextLiteral extends Value<String> {
-		
-		private String text;
-		
-		private TextLiteral(String text) {
-			this.text = text;
-		}
-		
-	}
-	
-	private static class BooleanLiteral extends Value<Boolean> {
-		
-		private boolean bool;
-		
-		private BooleanLiteral(boolean bool) {
-			this.bool = bool;
-		}
-		
+	@Override
+	public String toString() {
+		return xml;
 	}
 	
 }

@@ -1,0 +1,2 @@
+{"mainWorkspace": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><variables><variable type=\"Player\" id=\"Player_points\">points</variable></variables><block type=\"modBlock\" deletable=\"false\" x=\"0\" y=\"0\">com.noahgeren.bprg.Rule@816f27d</block></xml>",
+"variables": "<variables xmlns=\"https://developers.google.com/blockly/xml\"><variable type=\"Player\" id=\"Player_points\">points</variable></variables>"}

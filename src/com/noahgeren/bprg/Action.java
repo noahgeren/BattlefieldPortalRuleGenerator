@@ -1,7 +1,16 @@
 package com.noahgeren.bprg;
 
-public interface Action {
+public class Action {
 
-	// TODO
+	private String xml;
+	
+	protected Action(String xml) {
+		this.xml = xml;
+	}
+	
+	@Override
+	public String toString() {
+		return xml;
+	}
 	
 }

@@ -2,8 +2,8 @@ package com.noahgeren.bprg;
 
 public class Subroutine {
 	
-	protected String name;
-	protected Condition[] conditions;
+	private String name;
+	private Condition[] conditions;
 
 	protected Subroutine(String name, Condition... conditions) {
 		this.name = name;
@@ -11,11 +11,6 @@ public class Subroutine {
 	}
 	
 	public Action call() {
-		return new SubroutineCall();
+		return new Action("");
 	}
-	
-	private class SubroutineCall implements Action {
-		// TODO
-	}
-	
 }
