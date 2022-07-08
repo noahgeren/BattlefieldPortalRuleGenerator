@@ -16,7 +16,7 @@ public class Example {
 	public static void main(String[] args) throws IOException {
 		Mod mod = new Mod();
 
-		PlayerVariable<Integer> points = mod.addPlayerVariable("points");
+		PlayerVariable<Number> points = mod.addPlayerVariable("points");
 
 		mod.addRule("resetPlayerPoints", Event.ON_PLAYER_DEPLOYED, Condition.alwaysTrue())
 				.addActions(points.set(Value.getNumber(0), EventPayloads.EVENT_PLAYER));

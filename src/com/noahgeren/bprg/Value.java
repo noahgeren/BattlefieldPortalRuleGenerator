@@ -8,8 +8,8 @@ public class Value<T> {
 		this.xml = xml;
 	}
 	
-	public static Value<Integer> getNumber(int number) {
-		return new Value<Integer>("<block type=\\\"Number\\\"><field name=\\\"NUM\\\">" + number + "</field></block>");
+	public static Value<Number> getNumber(Number number) {
+		return new Value<Number>("<block type=\\\"Number\\\"><field name=\\\"NUM\\\">" + number + "</field></block>");
 	}
 	
 	public static Value<String> getText(String text) {
