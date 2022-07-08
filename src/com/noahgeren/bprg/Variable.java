@@ -10,14 +10,39 @@ public abstract class Variable<T> {
 	private String name;
 	private String type;
 	
+	private static final String SET_VARIABLE_FORMAT = "<block type=\\\"SetVariable\\\">"
+			+ "<value name=\\\"VALUE-0\\\">"
+			+ "<block type=\\\"variableReferenceBlock\\\">"
+			+ "<mutation isObjectVar=\\\"true\\\"></mutation>"
+			+ "<field name=\\\"OBJECTTYPE\\\">%s</field>"
+			+ "<field name=\\\"VAR\\\" id=\\\"%s\\\" variabletype=\\\"%s\\\">%s</field>"
+			+ "%s"
+			+ "</block>"
+			+ "</value>"
+			+ "<value name=\\\"VALUE-1\\\">%s</value>"
+			+ "</block>";
+	
 	private Variable(String name, String type) {
 		this.name = name;
 		this.type = type;
 	}
 	
+	private String getId() {
+		return String.format("%s_%s", type.toLowerCase(), name);
+	}
+	
+	private String getForObject(Value<?> object) {
+		if(object == null) return "";
+		return String.format("<value name=\\\"OBJECT\\\">%s</value>", object.toString());
+	}
+	
+	protected Action getSetVariableAction(Value<T> value, Value<?> forObject) {
+		return new Action(String.format(SET_VARIABLE_FORMAT, type, getId(), type, name, getForObject(forObject), value.toString()));
+	}
+	
 	@Override
 	public String toString() {
-		return String.format("<variable type=\\\"%s\\\" id=\\\"%s_%s\\\">%s</variable>", type, type.toLowerCase(), name, name);
+		return String.format("<variable type=\\\"%s\\\" id=\\\"%s\\\">%s</variable>", type, getId(), name);
 	}
 	
 	public static class GlobalVariable<T> extends Variable<T> {
@@ -31,8 +56,7 @@ public abstract class Variable<T> {
 		}
 		
 		public Action set(Value<T> value) {
-			// TODO
-			return new Action("");
+			return getSetVariableAction(value, null);
 		}
 	}
 	
@@ -47,8 +71,7 @@ public abstract class Variable<T> {
 		}
 		
 		public Action set(Value<T> value, Value<CapturePoint> capturePoint) {
-			// TODO
-			return new Action("");
+			return getSetVariableAction(value, capturePoint);
 		}
 	}
 	
@@ -63,8 +86,7 @@ public abstract class Variable<T> {
 		}
 		
 		public Action set(Value<T> value, Value<Player> player) {
-			// TODO
-			return new Action("");
+			return getSetVariableAction(value, player);
 		}
 	}
 	
@@ -79,8 +101,7 @@ public abstract class Variable<T> {
 		}
 		
 		public Action set(Value<T> value, Value<Team> team) {
-			// TODO
-			return new Action("");
+			return getSetVariableAction(value, team);
 		}
 	}
 	
@@ -95,8 +116,7 @@ public abstract class Variable<T> {
 		}
 		
 		public Action set(Value<T> value, Value<Vehicle> vehicle) {
-			// TODO
-			return new Action("");
+			return getSetVariableAction(value, vehicle);
 		}
 	}
 	

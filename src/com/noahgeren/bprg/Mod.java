@@ -80,7 +80,7 @@ public class Mod {
 		StringBuilder ruleXml = new StringBuilder();
 		rules.forEach(rule -> ruleXml.append(rule.toString()));
 		return String.format(
-				"{\"mainWorkspace\": \"<xml xmlns=\\\"https://developers.google.com/blockly/xml\\\"><variables>%s</variables>%s<block type=\\\"modBlock\\\" deletable=\\\"false\\\" x=\\\"0\\\" y=\\\"0\\\">%s</block></xml>\",\r\n"
+				"{\"mainWorkspace\": \"<xml xmlns=\\\"https://developers.google.com/blockly/xml\\\"><variables>%s</variables>%s<block type=\\\"modBlock\\\" deletable=\\\"false\\\" x=\\\"0\\\" y=\\\"0\\\"><statement name=\\\"RULES\\\">%s</statement></block></xml>\",\r\n"
 				+ "\"variables\": \"<variables xmlns=\\\"https://developers.google.com/blockly/xml\\\">%s</variables>\"}",
 				variableXml.toString(), subroutineXml.toString(), ruleXml.toString(), variableXml.toString());
 	}

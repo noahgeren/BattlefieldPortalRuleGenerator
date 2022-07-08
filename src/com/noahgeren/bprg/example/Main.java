@@ -19,7 +19,7 @@ public class Main {
 		
 		PlayerVariable<Integer> points = mod.addPlayerVariable("points"); 
 		
-		Rule gunGame = mod.addRule("reset", Event.ON_PLAYER_DIED, new Condition());
+		Rule gunGame = mod.addRule("reset", Event.ON_PLAYER_DIED, Condition.alwaysTrue());
 		gunGame.addActions(points.set(Value.getNumber(0), EventPayloads.EVENT_PLAYER));
 		
 		mod.export(new File("test.json"));
