@@ -19,9 +19,6 @@ public class Mod {
 	private List<Variable<?>> variables = new LinkedList<>();
 	private List<Subroutine> subroutines = new LinkedList<>();
 
-	protected Mod() {
-	}
-
 	public Rule addRule(String name, Event event, Condition... conditions) {
 		Rule rule = new Rule(name, event, conditions);
 		rules.add(rule);
@@ -63,6 +60,12 @@ public class Mod {
 		variables.add(var);
 		return var;
 	}
+	
+	public void export(File file) throws IOException {
+		try (FileWriter writer = new FileWriter(file, false)) {
+			writer.write(this.toString());
+		}
+	}
 
 	@Override
 	public String toString() {
@@ -71,12 +74,10 @@ public class Mod {
 		variables.forEach(variable -> variableXml.append(variable.toString()));
 		StringBuilder subroutineXml = new StringBuilder();
 		subroutines.forEach(subroutine -> subroutineXml.append(subroutine.toString()));
-		StringBuilder ruleXml = new StringBuilder();
-		rules.forEach(rule -> ruleXml.append(rule.toString()));
 		return String.format(
 				"{\"mainWorkspace\": \"<xml xmlns=\\\"https://developers.google.com/blockly/xml\\\"><variables>%s</variables>%s<block type=\\\"modBlock\\\" deletable=\\\"false\\\" x=\\\"0\\\" y=\\\"0\\\"><statement name=\\\"RULES\\\">%s</statement></block></xml>\",\r\n"
 				+ "\"variables\": \"<variables xmlns=\\\"https://developers.google.com/blockly/xml\\\">%s</variables>\"}",
-				variableXml.toString(), subroutineXml.toString(), ruleXml.toString(), variableXml.toString());
+				variableXml.toString(), subroutineXml.toString(), rules.get(0).toString(rules.subList(1, rules.size())), variableXml.toString());
 	}
 
 }
