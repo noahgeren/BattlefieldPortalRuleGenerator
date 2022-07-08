@@ -64,12 +64,6 @@ public class Mod {
 		return var;
 	}
 
-	public void export(File file) throws IOException {
-		try (FileWriter writer = new FileWriter(file, false)) {
-			writer.write(this.toString());
-		}
-	}
-
 	@Override
 	public String toString() {
 		// TODO: Make sure this works

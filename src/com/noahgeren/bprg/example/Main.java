@@ -22,7 +22,7 @@ public class Main {
 		Rule gunGame = mod.addRule("reset", Event.ON_PLAYER_DIED, Condition.alwaysTrue());
 		gunGame.addActions(points.set(Value.getNumber(0), EventPayloads.EVENT_PLAYER));
 		
-		mod.export(new File("test.json"));
+		BattlefieldPortalRuleGenerator.exportMod(mod, new File("test.json"));
 	}
 
 }

@@ -9,7 +9,6 @@ public class Value<T> {
 	}
 	
 	public static Value<Integer> getNumber(int number) {
-		// TODO
 		return new Value<Integer>("<block type=\\\"Number\\\"><field name=\\\"NUM\\\">" + number + "</field></block>");
 	}
 	
